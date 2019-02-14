@@ -4,27 +4,32 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import org.h2.util.StatementBuilder;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
+import javax.swing.ImageIcon;
 import java.awt.Font;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.JCheckBox;
+import javax.swing.JRadioButton;
+import javax.swing.JPasswordField;
 
 public class RegisterHomePage extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -47,50 +52,56 @@ public class RegisterHomePage extends JFrame {
 	 */
 	public RegisterHomePage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 521, 313);
+		setBounds(100, 100, 450, 252);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(250, 250, 210));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblRegisterhomepage = new JLabel("RegisterHomePage");
-		lblRegisterhomepage.setBackground(new Color(0, 0, 0));
-		lblRegisterhomepage.setForeground(new Color(0, 0, 0));
-		lblRegisterhomepage.setFont(new Font("Altenglisch MF", Font.PLAIN, 16));
-		lblRegisterhomepage.setBounds(170, 11, 192, 23);
-		contentPane.add(lblRegisterhomepage);
+		JLabel lblRegisterHomePage = new JLabel("Register Home Page");
+		lblRegisterHomePage.setFont(new Font("Altenglisch MF", Font.PLAIN, 16));
+		lblRegisterHomePage.setBounds(119, 11, 219, 24);
+		contentPane.add(lblRegisterHomePage);
 		
-		JLabel lblNewUserId = new JLabel("User ID");
-		lblNewUserId.setForeground(Color.BLACK);
-		lblNewUserId.setBounds(55, 60, 84, 14);
-		contentPane.add(lblNewUserId);
+		JLabel lblUsername = new JLabel("ID");
+		lblUsername.setBounds(169, 53, 76, 14);
+		contentPane.add(lblUsername);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(169, 90, 76, 14);
+		contentPane.add(lblPassword);
 		
 		textField = new JTextField();
-		textField.setBounds(149, 57, 240, 20);
+		textField.setToolTipText("ADMIN OR EMPLOYEE OR CUSTOMER ID");
+		textField.setBounds(244, 50, 168, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewpassword = new JLabel("Password");
-		lblNewpassword.setForeground(Color.BLACK);
-		lblNewpassword.setBounds(52, 109, 106, 14);
-		contentPane.add(lblNewpassword);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setForeground(Color.BLACK);
+		comboBox.setToolTipText("Select Role");
+		comboBox.setBackground(Color.WHITE);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select Role", "Master", "Admin", "Employee"}));
+		comboBox.setBounds(244, 125, 168, 20);
+		contentPane.add(comboBox);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(149, 106, 240, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Submit");
-		btnNewButton.setForeground(Color.DARK_GRAY);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
+		JButton btnLogin = new JButton("Register Login");
+		btnLogin.setToolTipText("Register Login");
+		btnLogin.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Login-in-icon.png"));
+		btnLogin.addActionListener(new ActionListener() 
+		{
+			private JComboBox comboBox_1;
+
+			public void actionPerformed(ActionEvent arg0) 
 			{
 				try
 				{
 					String u=textField.getText();
-					String p=textField_1.getText();
-					String str="select USERNAME,PASSWORD from UIDPSW1 where USERNAME='"+u+"'or PASSWORD='"+p+"'";
+					String p=passwordField.getText();
+					String r =(String) comboBox.getSelectedItem();
+					
+					String str=" select EMPID,EMPPWD,ROLL from ADDEMPLOYEEPAGE where EMPID ='"+u+"' and EMPPWD ='"+p+"' AND ROLL ='"+r+"'";
 					Class.forName("org.h2.Driver");
 					Connection conn=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test","sa","");
 					Statement stm =conn.createStatement();
@@ -98,48 +109,87 @@ public class RegisterHomePage extends JFrame {
 					set.next();
 					String uname=set.getString(1);
 					String pa=set.getString(2);
-					if(u.equals(uname)&&p.equals(pa))
-					{
-						JOptionPane.showMessageDialog(btnNewButton, "LoginSucess!!!");
-						CustomerHomePage CHP = new CustomerHomePage();
-						CHP.setVisible(true);
-						dispose();
-					}
-				}
-				catch(Exception t)
-				{
-					System.out.println(t);
-					JOptionPane.showMessageDialog(btnNewButton, "LoginFail!!!");
+					
+							if(u.equals(uname)&&p.equals(pa))
+								{
+
+									switch(r)
+										{
+											case "Master" :
+												JOptionPane.showMessageDialog(btnLogin, "Opening Admin add page!!!");
+												AddAdminPage AAP = new AddAdminPage();
+												AAP.setVisible(true);
+												dispose();
+												break;
+											case "Admin" :
+												JOptionPane.showMessageDialog(btnLogin, "Opening Employee add Page!!!");
+												AddEmployeePage EoHP = new AddEmployeePage();
+												EoHP.setVisible(true);
+												dispose();
+												break;
+											case "Employee" :
+												JOptionPane.showMessageDialog(btnLogin, "Opening Customer Add Page!!!");
+												AddCustomerPage EHP = new AddCustomerPage();
+												EHP.setVisible(true);
+												dispose();
+												break;
+										}
+								
+								}
 					
 				}
+				catch(Exception e)
+				{
+					System.out.println(e);
+					JOptionPane.showMessageDialog(btnLogin, "Invalid Input...!");
+				}
 			}
 		});
-		btnNewButton.setBounds(115, 166, 118, 56);
-		contentPane.add(btnNewButton);
+		btnLogin.setBackground(Color.WHITE);
+		btnLogin.setBounds(158, 169, 138, 32);
+		contentPane.add(btnLogin);
 		
-		JButton btnReset = new JButton("Reset");
-		btnReset.setForeground(Color.DARK_GRAY);
-		btnReset.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
+		JButton btnHome = new JButton("");
+		btnHome.setToolTipText("Reset");
+		btnHome.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Reset-icon.png"));
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
 			{
 				textField.setText("");
-				textField_1.setText("");
+				passwordField.setText("");
 			}
 		});
-		btnReset.setBounds(289, 156, 89, 23);
-		contentPane.add(btnReset);
+		btnHome.setBackground(Color.WHITE);
+		btnHome.setBounds(310, 169, 53, 32);
+		contentPane.add(btnHome);
 		
-		JButton btnBack = new JButton("Back");
-		btnBack.setForeground(Color.DARK_GRAY);
+		JButton btnBack = new JButton("");
+		btnBack.setToolTipText("Back");
+		btnBack.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Back-2-2-icon.png"));
 		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
+			public void actionPerformed(ActionEvent arg0)
 			{
 				HomePage HP= new HomePage();
 				HP.setVisible(true);
 				dispose();
 			}
 		});
-		btnBack.setBounds(289, 210, 89, 23);
+		btnBack.setBackground(Color.WHITE);
+		btnBack.setBounds(369, 169, 43, 32);
 		contentPane.add(btnBack);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Document-Copy-icon.png"));
+		label.setBounds(10, 21, 138, 152);
+		contentPane.add(label);
+		
+		JLabel lblSelectRole = new JLabel("Select Role");
+		lblSelectRole.setBounds(169, 128, 94, 14);
+		contentPane.add(lblSelectRole);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(244, 87, 168, 20);
+		contentPane.add(passwordField);
+		
 	}
 }

@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.Font;
 
 public class AdminHomePage extends JFrame {
 
@@ -34,17 +37,22 @@ public class AdminHomePage extends JFrame {
 	 */
 	public AdminHomePage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 488, 273);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblAdminHomePage = new JLabel("Admin Home Page");
-		lblAdminHomePage.setBounds(162, 11, 150, 14);
+		lblAdminHomePage.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		lblAdminHomePage.setBounds(204, 11, 150, 14);
 		contentPane.add(lblAdminHomePage);
 		
-		JButton btnNewButton = new JButton("View Employee And Customer Details");
+		JButton btnNewButton = new JButton("View");
+		btnNewButton.setToolTipText("View Employee And Customer Details");
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\view-icon.png"));
+		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -53,10 +61,13 @@ public class AdminHomePage extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(10, 50, 414, 23);
+		btnNewButton.setBounds(204, 52, 139, 23);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Search Employee Details");
+		JButton btnNewButton_1 = new JButton("Search");
+		btnNewButton_1.setToolTipText("Search Employee Details");
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Loupe-icon.png"));
+		btnNewButton_1.setBackground(Color.WHITE);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -65,10 +76,13 @@ public class AdminHomePage extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_1.setBounds(10, 98, 414, 23);
+		btnNewButton_1.setBounds(204, 98, 139, 23);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Update Employee Details");
+		JButton btnNewButton_2 = new JButton("Update");
+		btnNewButton_2.setToolTipText("Update Employee Details");
+		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\news-icon.png"));
+		btnNewButton_2.setBackground(Color.WHITE);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -77,10 +91,13 @@ public class AdminHomePage extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_2.setBounds(10, 144, 414, 23);
+		btnNewButton_2.setBounds(204, 144, 139, 23);
 		contentPane.add(btnNewButton_2);
 		
-		JButton btnNewButton_3 = new JButton("Delete Employee Details");
+		JButton btnNewButton_3 = new JButton("Delete");
+		btnNewButton_3.setToolTipText("Delete Employee Details");
+		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\delete-icon.png"));
+		btnNewButton_3.setBackground(Color.WHITE);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0)
 			{
@@ -89,10 +106,13 @@ public class AdminHomePage extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_3.setBounds(10, 191, 414, 23);
+		btnNewButton_3.setBounds(204, 191, 139, 23);
 		contentPane.add(btnNewButton_3);
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("");
+		btnBack.setToolTipText("Back");
+		btnBack.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Back-2-2-icon.png"));
+		btnBack.setBackground(Color.WHITE);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -101,11 +121,15 @@ public class AdminHomePage extends JFrame {
 				dispose();
 			}
 		});
-		btnBack.setBounds(335, 227, 89, 23);
+		btnBack.setBounds(373, 144, 75, 70);
 		contentPane.add(btnBack);
 		
-		JButton btnHome = new JButton("Home");
-		btnHome.addActionListener(new ActionListener() {
+		JButton btnHome = new JButton("");
+		btnHome.setToolTipText("Home");
+		btnHome.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Very-Basic-Home-Filled-icon.png"));
+		btnHome.setBackground(Color.WHITE);
+		btnHome.addActionListener(new ActionListener()
+		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				HomePage HP=new HomePage();
@@ -113,7 +137,17 @@ public class AdminHomePage extends JFrame {
 				dispose();
 			}
 		});
-		btnHome.setBounds(10, 227, 89, 23);
+		btnHome.setBounds(373, 52, 75, 69);
 		contentPane.add(btnHome);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\admin-icon.png"));
+		label.setBounds(85, 22, 139, 183);
+		contentPane.add(label);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\administrator-icon.png"));
+		label_1.setBounds(0, 11, 133, 128);
+		contentPane.add(label_1);
 	}
 }

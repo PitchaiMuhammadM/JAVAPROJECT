@@ -14,6 +14,8 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.Color;
 
 public class AddCustomerPage extends JFrame {
 
@@ -44,13 +46,15 @@ public class AddCustomerPage extends JFrame {
 	 */
 	public AddCustomerPage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 518, 361);
+		setBounds(100, 100, 518, 316);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblAddCustomerPage = new JLabel("Add Customer Page");
+		lblAddCustomerPage.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		lblAddCustomerPage.setBounds(236, 11, 138, 14);
 		contentPane.add(lblAddCustomerPage);
 		
@@ -59,7 +63,8 @@ public class AddCustomerPage extends JFrame {
 		contentPane.add(lblCustomerId);
 		
 		textField = new JTextField();
-		textField.setBounds(141, 36, 351, 20);
+		textField.setToolTipText("Enter Customer ID");
+		textField.setBounds(141, 36, 312, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -68,12 +73,14 @@ public class AddCustomerPage extends JFrame {
 		contentPane.add(lblCustomerName);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(141, 67, 351, 20);
+		textField_1.setToolTipText("Enter Customer Name");
+		textField_1.setBounds(141, 67, 312, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(141, 98, 351, 83);
+		textField_2.setToolTipText("Enter Customer Address");
+		textField_2.setBounds(141, 98, 312, 83);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -82,6 +89,9 @@ public class AddCustomerPage extends JFrame {
 		contentPane.add(lblAddress);
 		
 		JButton btnNewButton = new JButton("Submit");
+		btnNewButton.setToolTipText("Submit the DATA");
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Login-in-icon.png"));
+		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0)
 			{
@@ -111,10 +121,13 @@ public class AddCustomerPage extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(54, 248, 207, 52);
+		btnNewButton.setBounds(39, 236, 102, 34);
 		contentPane.add(btnNewButton);
 		
-		JButton btnHome = new JButton("Home");
+		JButton btnHome = new JButton("");
+		btnHome.setToolTipText("Home");
+		btnHome.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Very-Basic-Home-Filled-icon.png"));
+		btnHome.setBackground(Color.WHITE);
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -123,22 +136,28 @@ public class AddCustomerPage extends JFrame {
 				dispose();
 			}
 		});
-		btnHome.setBounds(285, 236, 89, 23);
+		btnHome.setBounds(151, 236, 89, 34);
 		contentPane.add(btnHome);
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("");
+		btnBack.setToolTipText("Back");
+		btnBack.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Back-2-2-icon.png"));
+		btnBack.setBackground(Color.WHITE);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				CustomerHomePage RHP=new CustomerHomePage();
+				RegisterHomePage RHP=new RegisterHomePage();
 				RHP.setVisible(true);
 				dispose();
 			}
 		});
-		btnBack.setBounds(403, 236, 89, 23);
+		btnBack.setBounds(250, 236, 89, 34);
 		contentPane.add(btnBack);
 		
-		JButton btnReset = new JButton("Reset");
+		JButton btnReset = new JButton("");
+		btnReset.setToolTipText("Reset");
+		btnReset.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Reset-icon.png"));
+		btnReset.setBackground(Color.WHITE);
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -149,7 +168,7 @@ public class AddCustomerPage extends JFrame {
 				
 			}
 		});
-		btnReset.setBounds(341, 285, 89, 23);
+		btnReset.setBounds(349, 236, 104, 34);
 		contentPane.add(btnReset);
 		
 		JLabel lblPhNo = new JLabel("Ph No");
@@ -157,7 +176,8 @@ public class AddCustomerPage extends JFrame {
 		contentPane.add(lblPhNo);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(141, 192, 351, 20);
+		textField_3.setToolTipText("Enter Customer Phone Number");
+		textField_3.setBounds(141, 192, 312, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 	}

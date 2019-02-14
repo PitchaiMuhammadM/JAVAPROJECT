@@ -17,7 +17,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 
-public class DelEmp extends JFrame {
+public class AdminDel extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -29,7 +29,7 @@ public class DelEmp extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DelEmp frame = new DelEmp();
+					AdminDel frame = new AdminDel();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class DelEmp extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DelEmp() {
+	public AdminDel() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 311, 206);
 		contentPane = new JPanel();
@@ -50,13 +50,13 @@ public class DelEmp extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblDeleteEmployeeDetails = new JLabel("Delete Employee Details");
+		JLabel lblDeleteEmployeeDetails = new JLabel("Delete Admin Details");
 		lblDeleteEmployeeDetails.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		lblDeleteEmployeeDetails.setBounds(80, 11, 179, 31);
+		lblDeleteEmployeeDetails.setBounds(79, 11, 216, 31);
 		contentPane.add(lblDeleteEmployeeDetails);
 		
-		JLabel lblEmpId = new JLabel("Emp ID");
-		lblEmpId.setBounds(28, 70, 46, 14);
+		JLabel lblEmpId = new JLabel("Admin ID");
+		lblEmpId.setBounds(28, 70, 70, 14);
 		contentPane.add(lblEmpId);
 		
 		textField = new JTextField();
@@ -75,8 +75,9 @@ public class DelEmp extends JFrame {
 				try
 				{
 					String EID=textField.getText();
-					String R = "Employee";
-					String Query=" DELETE FROM ADDEMPLOYEEPAGE where EMPID='"+EID+"'AND ROLL='"+R+"'";
+					String R ="Admin";
+					
+					String Query=" DELETE FROM ADDEMPLOYEEPAGE where EMPID='"+EID+"'AND ROLL ='"+R+"'";
 					
 					Class.forName("org.h2.Driver");
 					Connection conn=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test","sa","");
@@ -102,7 +103,7 @@ public class DelEmp extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				AdminHomePage HP=new AdminHomePage();
+				MasterLogin HP=new MasterLogin();
 				HP.setVisible(true);
 				dispose();
 			}

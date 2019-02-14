@@ -19,9 +19,7 @@ public class FirstPage extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -35,43 +33,46 @@ public class FirstPage extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public FirstPage() {
+		
+		setTitle("First Page");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 373, 310);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.DARK_GRAY);
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblWelcomeToPpm = new JLabel("Welcome to PPM");
+		JLabel lblWelcomeToPpm = new JLabel("Welcome");
+		lblWelcomeToPpm.setToolTipText("Welcome to Our Manufacturing Company");
 		lblWelcomeToPpm.setBackground(Color.WHITE);
 		lblWelcomeToPpm.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 14));
-		lblWelcomeToPpm.setForeground(Color.WHITE);
-		lblWelcomeToPpm.setBounds(143, 30, 172, 34);
+		lblWelcomeToPpm.setForeground(Color.BLACK);
+		lblWelcomeToPpm.setBounds(242, 40, 172, 34);
 		contentPane.add(lblWelcomeToPpm);
 		
-		JButton btnTapToOpen = new JButton("Tap to Open Home Page Our PPM Company");
+		JButton btnTapToOpen = new JButton("PPM ");
+		btnTapToOpen.setToolTipText("Tap to Open");
+		btnTapToOpen.setSelectedIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Apps-preferences-system-login-icon.png"));
 		btnTapToOpen.setForeground(Color.BLACK);
 		btnTapToOpen.setIcon(null);
 		btnTapToOpen.setBackground(Color.WHITE);
-		btnTapToOpen.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnTapToOpen.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnTapToOpen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				HomePage HP=new HomePage();
+				HomePage HP = new HomePage();
 				HP.setVisible(true);
 				dispose();
 			}
-			
 		});
-		btnTapToOpen.setBounds(10, 75, 414, 96);
+		btnTapToOpen.setBounds(225, 98, 118, 34);
 		contentPane.add(btnTapToOpen);
 		
 		JButton btnClose = new JButton("Exit");
+		btnClose.setToolTipText("Exit Page");
 		btnClose.setForeground(Color.BLACK);
 		btnClose.setBackground(Color.WHITE);
 		btnClose.addActionListener(new ActionListener() {
@@ -80,7 +81,12 @@ public class FirstPage extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnClose.setBounds(10, 197, 414, 23);
+		btnClose.setBounds(225, 186, 118, 23);
 		contentPane.add(btnClose);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Company-icon.png"));
+		label.setBounds(-15, 11, 247, 249);
+		contentPane.add(label);
 	}
 }

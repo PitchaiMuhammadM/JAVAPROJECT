@@ -20,6 +20,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 
 public class ViewCustomerTable extends JFrame {
 
@@ -49,13 +50,16 @@ public class ViewCustomerTable extends JFrame {
 	 */
 	public ViewCustomerTable() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 470);
+		setBounds(100, 100, 470, 470);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JButton btnViewdata = new JButton("ViewCustomerDetails");
+		btnViewdata.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\view-icon.png"));
+		btnViewdata.setBackground(Color.WHITE);
 		btnViewdata.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -78,10 +82,11 @@ public class ViewCustomerTable extends JFrame {
 				
 			}
 		});
-		btnViewdata.setBounds(120, 11, 205, 23);
+		btnViewdata.setBounds(98, 11, 205, 23);
 		contentPane.add(btnViewdata);
 		//Important code for view tables
 				JPanel panel = new JPanel();
+				panel.setBackground(Color.WHITE);
 				panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 				panel.setBounds(26, 74, 398, 332);
 				contentPane.add(panel);
@@ -96,11 +101,15 @@ public class ViewCustomerTable extends JFrame {
 				scrollPane.setViewportView(table);
 				
 				textField = new JTextField();
-				textField.setBounds(26, 11, 84, 52);
+				textField.setToolTipText("Enter CUSTOMER ID");
+				textField.setBackground(Color.WHITE);
+				textField.setBounds(26, 11, 62, 57);
 				contentPane.add(textField);
 				textField.setColumns(10);
 				
 				JButton btnViewall = new JButton("ViewAll");
+				btnViewall.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\view-icon.png"));
+				btnViewall.setBackground(Color.WHITE);
 				btnViewall.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0)
 					{
@@ -122,19 +131,25 @@ public class ViewCustomerTable extends JFrame {
 						}
 					}
 				});
-				btnViewall.setBounds(120, 45, 205, 23);
+				btnViewall.setBounds(98, 45, 205, 23);
 				contentPane.add(btnViewall);
 				
-				JButton btnReset = new JButton("Reset");
+				JButton btnReset = new JButton("");
+				btnReset.setToolTipText("Reset");
+				btnReset.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Reset-icon.png"));
+				btnReset.setBackground(Color.WHITE);
 				btnReset.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						textField.setText("");
 					}
 				});
-				btnReset.setBounds(335, 11, 89, 23);
+				btnReset.setBounds(313, 11, 49, 57);
 				contentPane.add(btnReset);
 				
-				JButton btnBack = new JButton("Back");
+				JButton btnBack = new JButton("");
+				btnBack.setToolTipText("Back");
+				btnBack.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Back-2-2-icon.png"));
+				btnBack.setBackground(Color.WHITE);
 				btnBack.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) 
 					{
@@ -143,7 +158,7 @@ public class ViewCustomerTable extends JFrame {
 						dispose();
 					}
 				});
-				btnBack.setBounds(335, 45, 89, 23);
+				btnBack.setBounds(372, 11, 52, 57);
 				contentPane.add(btnBack);
 	}
 }

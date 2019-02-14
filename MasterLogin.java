@@ -12,7 +12,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 
-public class EmpHomePage extends JFrame {
+public class MasterLogin extends JFrame {
 
 	private JPanel contentPane;
 
@@ -23,7 +23,7 @@ public class EmpHomePage extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EmpHomePage frame = new EmpHomePage();
+					MasterLogin frame = new MasterLogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class EmpHomePage extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EmpHomePage() {
+	public MasterLogin() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 428, 274);
 		contentPane = new JPanel();
@@ -44,7 +44,7 @@ public class EmpHomePage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblEmployeeHomepage = new JLabel("Employee HomePage");
+		JLabel lblEmployeeHomepage = new JLabel("Admin Page");
 		lblEmployeeHomepage.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		lblEmployeeHomepage.setBounds(142, 11, 187, 25);
 		contentPane.add(lblEmployeeHomepage);
@@ -56,7 +56,7 @@ public class EmpHomePage extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				ViewCustomerTable VCT=new ViewCustomerTable();
+				AdminView VCT=new AdminView();
 				VCT.setVisible(true);
 				dispose();
 			}
@@ -71,7 +71,7 @@ public class EmpHomePage extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				SearchCutomerTable SCT=new SearchCutomerTable();
+				AdminSearch SCT=new AdminSearch();
 				SCT.setVisible(true);
 				dispose();
 			}
@@ -86,7 +86,7 @@ public class EmpHomePage extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				UpdateCustomerTable UCT=new UpdateCustomerTable();
+				AdminUpdate UCT=new AdminUpdate();
 				UCT.setVisible(true);
 				dispose();
 			}
@@ -101,7 +101,7 @@ public class EmpHomePage extends JFrame {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				DeleteCustomerTable DCT= new DeleteCustomerTable();
+				AdminDel DCT= new AdminDel();
 				DCT.setVisible(true);
 				dispose();
 			}
@@ -124,7 +124,7 @@ public class EmpHomePage extends JFrame {
 		contentPane.add(btnHome);
 		
 		JButton btnBack = new JButton("");
-		btnBack.setToolTipText("Reset");
+		btnBack.setToolTipText("Back");
 		btnBack.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Back-2-2-icon.png"));
 		btnBack.setBackground(Color.WHITE);
 		btnBack.addActionListener(new ActionListener() {

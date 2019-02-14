@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
-public class SearchCutomerTable extends JFrame {
+public class AdminSearch extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -32,7 +33,7 @@ public class SearchCutomerTable extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SearchCutomerTable frame = new SearchCutomerTable();
+					AdminSearch frame = new AdminSearch();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,85 +45,83 @@ public class SearchCutomerTable extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SearchCutomerTable() {
+	public AdminSearch() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 445, 436);
+		setBounds(100, 100, 450, 362);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblSearchCustomerTable = new JLabel("Search Customer Table");
-		lblSearchCustomerTable.setBounds(162, 11, 145, 14);
-		contentPane.add(lblSearchCustomerTable);
+		JLabel lblSearchEmployeeDetails = new JLabel("Search Admin Details");
+		lblSearchEmployeeDetails.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		lblSearchEmployeeDetails.setBounds(138, 11, 249, 29);
+		contentPane.add(lblSearchEmployeeDetails);
 		
-		JLabel lblCustomerId = new JLabel("Customer ID");
-		lblCustomerId.setBounds(32, 53, 77, 14);
-		contentPane.add(lblCustomerId);
+		JLabel lblEmployeeId = new JLabel("Admin  ID");
+		lblEmployeeId.setBounds(43, 54, 166, 14);
+		contentPane.add(lblEmployeeId);
+		
+		JLabel lblEmployeeName = new JLabel("Name");
+		lblEmployeeName.setBounds(43, 91, 101, 14);
+		contentPane.add(lblEmployeeName);
+		
+		JLabel lblAddress = new JLabel("Address");
+		lblAddress.setBounds(43, 130, 81, 14);
+		contentPane.add(lblAddress);
+		
+		JLabel lblPhNo = new JLabel("Ph NO:");
+		lblPhNo.setBounds(43, 222, 69, 14);
+		contentPane.add(lblPhNo);
 		
 		textField = new JTextField();
-		textField.setToolTipText("Enter Customer ID");
-		textField.setBounds(140, 50, 262, 20);
+		textField.setToolTipText("Enter Admin ID");
+		textField.setBounds(190, 51, 197, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblCustomerName = new JLabel("Customer Name");
-		lblCustomerName.setBounds(32, 93, 105, 14);
-		contentPane.add(lblCustomerName);
-		
 		textField_1 = new JTextField();
-		textField_1.setToolTipText("");
-		textField_1.setBounds(140, 90, 262, 20);
+		textField_1.setBounds(190, 88, 197, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblAddress = new JLabel("Address");
-		lblAddress.setBounds(32, 150, 65, 14);
-		contentPane.add(lblAddress);
-		
 		textField_2 = new JTextField();
-		textField_2.setBounds(140, 146, 262, 113);
+		textField_2.setBounds(189, 130, 198, 79);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
-		JLabel lblPhNo = new JLabel("Ph No:");
-		lblPhNo.setBounds(32, 287, 46, 14);
-		contentPane.add(lblPhNo);
-		
 		textField_3 = new JTextField();
-		textField_3.setBounds(140, 284, 262, 20);
+		textField_3.setBounds(190, 219, 197, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
 		JButton btnSearch = new JButton("Search");
-		btnSearch.setToolTipText("Search the Customer Details");
+		btnSearch.setToolTipText("Search");
 		btnSearch.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Loupe-icon.png"));
 		btnSearch.setBackground(Color.WHITE);
 		btnSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
+			public void actionPerformed(ActionEvent arg0) 
 			{
 				try
 				{
-					String cid=textField.getText();
-					String str1="select * from ADDCUSTOMERPAGE1 where CUSTOMERID='"+cid+"'";
+					String eid=textField.getText();
+					String ro = "Admin";
+					String str1="select * from ADDEMPLOYEEPAGE where EMPID='"+eid+"' and ROLL='"+ro+"'";
 					Class.forName("org.h2.Driver");
 					Connection conn=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test","sa","");
 					Statement stm=conn.createStatement();
 					ResultSet rs=stm.executeQuery(str1);
 					rs.next();
 					String pn=rs.getString(2);
-					String pp=rs.getString(3);
-					String pq=rs.getString(4);
+					String pp=rs.getString(4);
+					String pq=rs.getString(5);
 					
 					textField_1.setText(pn);
 					textField_2.setText(pp);
 					textField_3.setText(pq);
 					
 					JOptionPane.showMessageDialog(btnSearch, "Searching...");
-					
-					
-					
 				}
 				catch(Exception t)
 				{
@@ -130,23 +129,8 @@ public class SearchCutomerTable extends JFrame {
 				}
 			}
 		});
-		btnSearch.setBounds(29, 332, 119, 40);
+		btnSearch.setBounds(43, 271, 123, 39);
 		contentPane.add(btnSearch);
-		
-		JButton btnBack = new JButton("");
-		btnBack.setToolTipText("Back");
-		btnBack.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Back-2-2-icon.png"));
-		btnBack.setBackground(Color.WHITE);
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				EmpHomePage EHP = new EmpHomePage();
-				EHP.setVisible(true);
-				dispose();
-			}
-		});
-		btnBack.setBounds(173, 332, 57, 40);
-		contentPane.add(btnBack);
 		
 		JButton btnReset = new JButton("");
 		btnReset.setToolTipText("Reset");
@@ -161,8 +145,23 @@ public class SearchCutomerTable extends JFrame {
 				textField_3.setText("");
 			}
 		});
-		btnReset.setBounds(345, 332, 57, 40);
+		btnReset.setBounds(333, 271, 54, 39);
 		contentPane.add(btnReset);
+		
+		JButton btnBack = new JButton("");
+		btnBack.setToolTipText("Back");
+		btnBack.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Back-2-2-icon.png"));
+		btnBack.setBackground(Color.WHITE);
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				MasterLogin AP= new MasterLogin();
+				AP.setVisible(true);
+				dispose();
+			}
+		});
+		btnBack.setBounds(190, 271, 63, 39);
+		contentPane.add(btnBack);
 		
 		JButton btnHome = new JButton("");
 		btnHome.setToolTipText("Home");
@@ -171,12 +170,12 @@ public class SearchCutomerTable extends JFrame {
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				AdminPage EHP = new AdminPage();
-				EHP.setVisible(true);
+				AdminPage AP=new AdminPage();
+				AP.setVisible(true);
 				dispose();
 			}
 		});
-		btnHome.setBounds(263, 332, 44, 40);
+		btnHome.setBounds(264, 271, 59, 39);
 		contentPane.add(btnHome);
 	}
 

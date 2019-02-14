@@ -15,6 +15,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class SearchEmp extends JFrame {
 
@@ -45,14 +47,15 @@ public class SearchEmp extends JFrame {
 	 */
 	public SearchEmp() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 417);
+		setBounds(100, 100, 450, 362);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblSearchEmployeeDetails = new JLabel("Search Employee Details");
-		lblSearchEmployeeDetails.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblSearchEmployeeDetails.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		lblSearchEmployeeDetails.setBounds(138, 11, 169, 29);
 		contentPane.add(lblSearchEmployeeDetails);
 		
@@ -73,6 +76,7 @@ public class SearchEmp extends JFrame {
 		contentPane.add(lblPhNo);
 		
 		textField = new JTextField();
+		textField.setToolTipText("Enter Employee ID");
 		textField.setBounds(190, 51, 197, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
@@ -93,13 +97,17 @@ public class SearchEmp extends JFrame {
 		textField_3.setColumns(10);
 		
 		JButton btnSearch = new JButton("Search");
+		btnSearch.setToolTipText("Search");
+		btnSearch.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Loupe-icon.png"));
+		btnSearch.setBackground(Color.WHITE);
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				try
 				{
 					String eid=textField.getText();
-					String str1="select * from ADDEMPLOYEEPAGE where EMPID='"+eid+"'";
+					String ro= "Employee";
+					String str1="select * from ADDEMPLOYEEPAGE where EMPID='"+eid+"'and ROLL='"+ro+"'";
 					Class.forName("org.h2.Driver");
 					Connection conn=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test","sa","");
 					Statement stm=conn.createStatement();
@@ -124,10 +132,13 @@ public class SearchEmp extends JFrame {
 				}
 			}
 		});
-		btnSearch.setBounds(78, 283, 143, 47);
+		btnSearch.setBounds(43, 271, 123, 39);
 		contentPane.add(btnSearch);
 		
-		JButton btnReset = new JButton("Reset");
+		JButton btnReset = new JButton("");
+		btnReset.setToolTipText("Reset");
+		btnReset.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Reset-icon.png"));
+		btnReset.setBackground(Color.WHITE);
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -137,10 +148,13 @@ public class SearchEmp extends JFrame {
 				textField_3.setText("");
 			}
 		});
-		btnReset.setBounds(284, 261, 89, 23);
+		btnReset.setBounds(333, 271, 54, 39);
 		contentPane.add(btnReset);
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("");
+		btnBack.setToolTipText("Back");
+		btnBack.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Back-2-2-icon.png"));
+		btnBack.setBackground(Color.WHITE);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -149,10 +163,13 @@ public class SearchEmp extends JFrame {
 				dispose();
 			}
 		});
-		btnBack.setBounds(284, 295, 89, 23);
+		btnBack.setBounds(190, 271, 63, 39);
 		contentPane.add(btnBack);
 		
-		JButton btnHome = new JButton("Home");
+		JButton btnHome = new JButton("");
+		btnHome.setToolTipText("Home");
+		btnHome.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Very-Basic-Home-Filled-icon.png"));
+		btnHome.setBackground(Color.WHITE);
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -161,7 +178,7 @@ public class SearchEmp extends JFrame {
 				dispose();
 			}
 		});
-		btnHome.setBounds(284, 329, 89, 23);
+		btnHome.setBounds(264, 271, 59, 39);
 		contentPane.add(btnHome);
 	}
 

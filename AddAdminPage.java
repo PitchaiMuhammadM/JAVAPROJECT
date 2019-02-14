@@ -20,18 +20,9 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
-import javax.swing.JEditorPane;
-import javax.swing.JToggleButton;
-import javax.swing.JTextArea;
-import javax.swing.JSpinner;
-import javax.swing.JSlider;
-import javax.swing.JScrollBar;
-import javax.swing.JSeparator;
-import javax.swing.JTree;
-import javax.swing.JProgressBar;
-import javax.swing.JCheckBox;
+import javax.swing.DropMode;
 
-public class AddEmployeePage extends JFrame {
+public class AddAdminPage extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -47,7 +38,7 @@ public class AddEmployeePage extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddEmployeePage frame = new AddEmployeePage();
+					AddAdminPage frame = new AddAdminPage();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,36 +50,36 @@ public class AddEmployeePage extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AddEmployeePage() {
+	public AddAdminPage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 527, 409);
+		setBounds(100, 100, 527, 419);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblAddEmployeePage = new JLabel("Add Employee Page");
+		JLabel lblAddEmployeePage = new JLabel("Add Admin Page");
 		lblAddEmployeePage.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		lblAddEmployeePage.setBounds(178, 11, 150, 25);
 		contentPane.add(lblAddEmployeePage);
 		
-		JLabel lblNewUserId = new JLabel("Employee ID");
+		JLabel lblNewUserId = new JLabel("Admin ID");
 		lblNewUserId.setBounds(53, 50, 88, 14);
 		contentPane.add(lblNewUserId);
 		
-		JLabel lblNewPassword = new JLabel("Employee Name");
+		JLabel lblNewPassword = new JLabel("Admin Name");
 		lblNewPassword.setBounds(53, 81, 135, 14);
 		contentPane.add(lblNewPassword);
 		
 		textField = new JTextField();
-		textField.setToolTipText("Enter New Employee ID");
+		textField.setToolTipText("Enter New Admin ID");
 		textField.setBounds(198, 47, 255, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setToolTipText("Enter Employee Name");
+		textField_1.setToolTipText("Enter Admin Name");
 		textField_1.setBounds(198, 78, 254, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
@@ -99,18 +90,19 @@ public class AddEmployeePage extends JFrame {
 		
 		textField_3 = new JTextField();
 		textField_3.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_3.setToolTipText("Enter the Employee Address");
+		textField_3.setToolTipText("Enter the Admin Address");
 		textField_3.setBounds(198, 147, 255, 95);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
 		JLabel lblPhNo = new JLabel("Ph NO:");
-		lblPhNo.setBounds(53, 267, 88, 14);
+		lblPhNo.setBounds(53, 270, 88, 14);
 		contentPane.add(lblPhNo);
 		
 		textField_4 = new JTextField();
-		textField_4.setToolTipText("Enter the Employee Phone Number");
-		textField_4.setBounds(198, 264, 255, 20);
+		textField_4.setDropMode(DropMode.ON);
+		textField_4.setToolTipText("Enter the Admin Phone Number");
+		textField_4.setBounds(198, 267, 255, 20);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
@@ -121,7 +113,6 @@ public class AddEmployeePage extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			private JComboBox comboBox;
 			private JComboBox roleSelection;
-			private JLabel chckbxEmployee;
 
 			public void actionPerformed(ActionEvent arg0)
 			{
@@ -134,7 +125,7 @@ public class AddEmployeePage extends JFrame {
 				
 				String eadd=textField_3.getText();
 				
-				String ERL="Employee";
+				String ERL="Admin";
 				
 				String eph=textField_4.getText();
 				
@@ -155,7 +146,7 @@ public class AddEmployeePage extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(53, 311, 112, 37);
+		btnNewButton.setBounds(53, 320, 122, 37);
 		contentPane.add(btnNewButton);
 		
 		JButton btnBack = new JButton("");
@@ -171,7 +162,7 @@ public class AddEmployeePage extends JFrame {
 			}
 			
 		});
-		btnBack.setBounds(299, 311, 60, 37);
+		btnBack.setBounds(302, 320, 55, 37);
 		contentPane.add(btnBack);
 		
 		JButton btnHome = new JButton("");
@@ -186,7 +177,7 @@ public class AddEmployeePage extends JFrame {
 				dispose();
 			}
 		});
-		btnHome.setBounds(198, 311, 60, 37);
+		btnHome.setBounds(198, 320, 55, 37);
 		contentPane.add(btnHome);
 		
 		JButton btnReset = new JButton("");
@@ -204,15 +195,15 @@ public class AddEmployeePage extends JFrame {
 				
 			}
 		});
-		btnReset.setBounds(393, 311, 60, 37);
+		btnReset.setBounds(398, 320, 55, 37);
 		contentPane.add(btnReset);
 		
-		JLabel lblEmployeePassword = new JLabel("Employee Password");
-		lblEmployeePassword.setBounds(53, 112, 135, 14);
+		JLabel lblEmployeePassword = new JLabel("Admin Password");
+		lblEmployeePassword.setBounds(53, 112, 122, 14);
 		contentPane.add(lblEmployeePassword);
 		
 		passwordField = new JPasswordField();
-		passwordField.setToolTipText("Enter New Employee Password");
+		passwordField.setToolTipText("Enter Admin Password");
 		passwordField.setBounds(198, 109, 255, 20);
 		contentPane.add(passwordField);
 	}

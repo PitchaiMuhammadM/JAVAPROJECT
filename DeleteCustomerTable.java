@@ -13,6 +13,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class DeleteCustomerTable extends JFrame {
 
@@ -40,26 +43,32 @@ public class DeleteCustomerTable extends JFrame {
 	 */
 	public DeleteCustomerTable() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 382, 198);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblDeleteCustomerTable = new JLabel("Delete Customer Table");
-		lblDeleteCustomerTable.setBounds(147, 11, 134, 14);
+		lblDeleteCustomerTable.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		lblDeleteCustomerTable.setBounds(102, 21, 199, 14);
 		contentPane.add(lblDeleteCustomerTable);
 		
 		JLabel lblCustomerId = new JLabel("Customer ID");
-		lblCustomerId.setBounds(31, 49, 82, 14);
+		lblCustomerId.setBounds(10, 49, 82, 14);
 		contentPane.add(lblCustomerId);
 		
 		textField = new JTextField();
-		textField.setBounds(127, 46, 178, 20);
+		textField.setToolTipText("Enter the Customer ID");
+		textField.setBounds(102, 46, 250, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.setToolTipText("Delete the Customer Id");
+		btnDelete.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\delete-icon.png"));
+		btnDelete.setBackground(Color.WHITE);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -82,10 +91,13 @@ public class DeleteCustomerTable extends JFrame {
 				}
 			}
 		});
-		btnDelete.setBounds(147, 107, 134, 63);
+		btnDelete.setBounds(10, 89, 134, 46);
 		contentPane.add(btnDelete);
 		
-		JButton btnHome = new JButton("Home");
+		JButton btnHome = new JButton("");
+		btnHome.setToolTipText("Home");
+		btnHome.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Very-Basic-Home-Filled-icon.png"));
+		btnHome.setBackground(Color.WHITE);
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -94,10 +106,13 @@ public class DeleteCustomerTable extends JFrame {
 				dispose();
 			}
 		});
-		btnHome.setBounds(312, 89, 89, 23);
+		btnHome.setBounds(154, 89, 59, 46);
 		contentPane.add(btnHome);
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("");
+		btnBack.setToolTipText("Back");
+		btnBack.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Back-2-2-icon.png"));
+		btnBack.setBackground(Color.WHITE);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -106,16 +121,19 @@ public class DeleteCustomerTable extends JFrame {
 				dispose();
 			}
 		});
-		btnBack.setBounds(312, 146, 89, 23);
+		btnBack.setBounds(223, 89, 59, 46);
 		contentPane.add(btnBack);
 		
-		JButton btnReset = new JButton("Reset");
+		JButton btnReset = new JButton("");
+		btnReset.setToolTipText("Reset");
+		btnReset.setIcon(new ImageIcon("C:\\Users\\Pitchai Muhammad M\\Desktop\\icons\\Reset-icon.png"));
+		btnReset.setBackground(Color.WHITE);
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText("");
 			}
 		});
-		btnReset.setBounds(31, 127, 89, 23);
+		btnReset.setBounds(293, 89, 59, 46);
 		contentPane.add(btnReset);
 	}
 
